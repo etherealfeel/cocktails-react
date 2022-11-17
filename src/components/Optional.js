@@ -12,7 +12,7 @@ const Optional = () => {
     }, [])
 
     const getOptional = async () => {
-        const request = await fetch('https:\\www.thecocktaildb.com/api/json/v1/1/filter.php?a=Optional_alcohol');
+        const request = await fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Optional_alcohol');
         const data = await request.json(); 
         const lessDrinks = data.drinks.slice(0, 10);
         setOptional(lessDrinks);

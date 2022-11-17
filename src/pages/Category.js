@@ -8,7 +8,7 @@ const Category = () => {
     let params = useParams();
 
     const getCategory = async (name) => {
-      const request = await fetch(`https:\\www.thecocktaildb.com/api/json/v1/1/filter.php?c=${name}`);
+      const request = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${name}`);
       const data = await request.json();
       const lessDrinks = data.drinks.slice(0, 20);
       setCategory(lessDrinks);

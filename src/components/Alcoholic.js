@@ -12,7 +12,7 @@ const Alcoholic = () => {
     }, [])
 
     const getAlcoholic = async () => {
-        const request = await fetch('https:\\www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic');
+        const request = await fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic');
         const data = await request.json(); 
         const lessDrinks = data.drinks.slice(0, 10);
         setAlcoholic(lessDrinks);
