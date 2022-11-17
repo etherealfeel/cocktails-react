@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from "./components/Navbar";
+import { BrowserRouter } from 'react-router-dom';
+import SearchForm from "./components/SearchForm";
+import Pages from "./pages/Pages";
+import styled from "styled-components";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StyledDiv className="App">
+      <BrowserRouter>
+        <Navbar/>
+        <SearchForm/>
+        <Pages/>
+      </BrowserRouter>
+    </StyledDiv>
   );
 }
+
+const StyledDiv = styled.div`
+  min-height: 100vh;
+  background: rgb(0,0,0);
+  background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(42,0,75,1) 100%, rgba(68,68,68,1) 100%, rgba(255,255,255,1) 100%, rgba(4,4,60,1) 100%, rgba(9,9,121,0) 100%);  
+`
 
 export default App;
