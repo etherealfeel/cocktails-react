@@ -1,31 +1,19 @@
-import {useState, useEffect} from 'react'
 import styled from 'styled-components'
 import { Link, useParams } from 'react-router-dom'
+import useFetch from '../hooks/useFetch'
 
 const Searched = () => {
-
     let params = useParams();
-    const [drinks, setDrinks] = useState([]);
-
-    const getSearched = async (name) => {
-        const request = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`);
-        const data = await request.json();
-        const lessDrinks = data.drinks.slice(0,10)
-        setDrinks(lessDrinks)
-    }
-
-    useEffect(() => {
-        getSearched(params.search)
-    }, [params.search]);
+    const {data: drinks, loading, error} = useFetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${params.search}`);
 
   return (
     <Grid>
-      {drinks.map((drink) => {
+      {drinks.map((item) => {
         return (
-          <Card key={drink.idDrink}>
-            <img src={drink.strDrinkThumb} alt={drink.strDrink} />
-            <h4>{drink.strDrink}</h4>
-            <StyledLink to={'/details/'+drink.idDrink}>
+          <Card key={item.idDrink}>
+            <img src={item.strDrinkThumb} alt={item.strDrink} />
+            <h4>{item.strDrink}</h4>
+            <StyledLink to={'/details/'+item.idDrink}>
               <button>Details</button>
             </StyledLink>
           </Card>

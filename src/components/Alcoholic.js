@@ -1,23 +1,13 @@
-import { useState, useEffect } from 'react';
 import {Splide, SplideSlide} from '@splidejs/react-splide';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import '@splidejs/react-splide/css';
+import useFetch from './../hooks/useFetch';
 
 const Alcoholic = () => {
-    const [alcoholic, setAlcoholic] = useState([]);
+    const {data: drinks, loading, error} = useFetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic', 10);
 
-    useEffect(() => {
-        getAlcoholic();
-    }, [])
-
-    const getAlcoholic = async () => {
-        const request = await fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic');
-        const data = await request.json(); 
-        const lessDrinks = data.drinks.slice(0, 10);
-        setAlcoholic(lessDrinks);
-    }
-  return (
+    return (
     <div>
       <Container>
             <h3>Alcoholic</h3>
@@ -31,7 +21,7 @@ const Alcoholic = () => {
                 drag: 'free',
                 gap: '5rem',
             }}>
-                {alcoholic.map((item) => {
+                {drinks.map((item) => {
                     return (
                         <SplideSlide key={item.idDrink}>
                             <Link to={'/details/'+item.idDrink}>

@@ -1,22 +1,13 @@
-import { useState, useEffect } from 'react';
 import {Splide, SplideSlide} from '@splidejs/react-splide';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import '@splidejs/react-splide/css';
+import useFetch from '../hooks/useFetch';
 
 const Optional = () => {
-    const [optional, setOptional] = useState([]);
 
-    useEffect(() => {
-        getOptional();
-    }, [])
+    const {data: drinks, loading, error} = useFetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Optional_alcohol', 10);
 
-    const getOptional = async () => {
-        const request = await fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Optional_alcohol');
-        const data = await request.json(); 
-        const lessDrinks = data.drinks.slice(0, 10);
-        setOptional(lessDrinks);
-    }
   return (
     <div>
       <Container>
@@ -31,7 +22,7 @@ const Optional = () => {
                 drag: 'free',
                 gap: '5rem',
             }}>
-                {optional.map((item) => {
+                {drinks.map((item) => {
                     return (
                         <SplideSlide key={item.idDrink}>
                             <Link to={'/details/'+item.idDrink}>
