@@ -14,4 +14,4 @@ const ErrorText = styled.h1`
     color: violet;
 `
 
-export default ErrorMessage
+export default ErrorMessage;

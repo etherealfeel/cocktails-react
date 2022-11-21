@@ -100,4 +100,4 @@ const StyledLink = styled(Link)`
   margin: 0 auto;
 `
 
-export default Category
+export default Category;

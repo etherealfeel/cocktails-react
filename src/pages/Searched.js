@@ -16,12 +16,13 @@ const Searched = () => {
     <>
       {spinner}
       {errorMessage}
-      <Grid
+      {drinks.length ? 
+        <Grid
         animate={{opacity: 1}}
         initial={{opacity: 0}}
         exit={{opacity: 0}}
         transition={{duration: 0.5}}
-      >
+        >
         {drinks.map((item) => {
           return (
             <Card key={item.idDrink}>
@@ -33,7 +34,8 @@ const Searched = () => {
             </Card>
           )
         })}
-      </Grid>
+        </Grid>
+        : null}
     </>
   )
 }
@@ -99,4 +101,4 @@ const StyledLink = styled(Link)`
   margin: 0 auto;
 `
 
-export default Searched
+export default Searched;

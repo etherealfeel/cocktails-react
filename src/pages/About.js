@@ -29,4 +29,4 @@ const Container = styled.div`
   }
 `
 
-export default About
+export default About;

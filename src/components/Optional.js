@@ -97,4 +97,4 @@ const Gradient = styled.div`
     background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.5));
 `
 
-export default Optional
+export default Optional;

@@ -81,4 +81,4 @@ const Info = styled.div`
 
 
 
-export default Drink
+export default Drink;
