@@ -1,6 +1,7 @@
-import styled from 'styled-components'
-import { Link, useParams } from 'react-router-dom'
-import useFetch from '../hooks/useFetch'
+import styled from 'styled-components';
+import { Link, useParams } from 'react-router-dom';
+import useFetch from '../hooks/useFetch';
+import { motion } from 'framer-motion';
 
 const Searched = () => {
     let params = useParams();
@@ -23,7 +24,7 @@ const Searched = () => {
   )
 }
 
-const Grid = styled.div`
+const Grid = styled(motion.div)`
   display: grid;
   padding: 2rem 20rem;
   grid-template-columns: repeat(4, 1fr);

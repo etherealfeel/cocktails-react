@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import useFetch from './../hooks/useFetch';
+import { motion } from 'framer-motion';
 
 const Category = () => {
   let params = useParams();
@@ -9,10 +10,10 @@ const Category = () => {
 
   return (
     <Grid
-    animate={{opacity: 1}}
-    initial={{opacity: 0}}
-    exit={{opacity: 0}}
-    transition={{duration: 0.5}}
+      animate={{opacity: 1}}
+      initial={{opacity: 0}}
+      exit={{opacity: 0}}
+      transition={{duration: 0.5}}
     >
       {drinks.map((item) => {
         return (
@@ -29,7 +30,7 @@ const Category = () => {
   )
 }
 
-const Grid = styled.div`
+const Grid = styled(motion.div)`
   display: grid;
   padding: 2rem 20rem;
   grid-template-columns: repeat(4, 1fr);

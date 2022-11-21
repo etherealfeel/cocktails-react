@@ -1,15 +1,15 @@
-import React from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import Searched from './Searched';
 import Home from './Home';
 import Drink from './Drink';
 import Category from './Category';
 import About from './About';
+import { AnimatePresence } from 'framer-motion';
 
 const Pages = () => {
-    const location = useLocation();
+  const location = useLocation();
   return (
-    <div>
+    <AnimatePresence mode='wait'>
       <Routes location={location} key={location.pathname}>
         <Route path='/' element={<Home/>}/>
         <Route path='/searched/:search' element={<Searched/>}/>
@@ -17,7 +17,7 @@ const Pages = () => {
         <Route path='/drinks/:type' element={<Category/>}/>
         <Route path='/about' element={<About/>}/>
       </Routes>
-    </div>
+    </AnimatePresence>
   )
 }
 

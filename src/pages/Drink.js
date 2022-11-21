@@ -4,7 +4,7 @@ import useFetch from './../hooks/useFetch';
 
 const Drink = () => {
   const params = useParams();
-  const {data: drink, loading, error} = useFetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${params.id}`, 'all', 'single');
+  const {data: drink, loading, error} = useFetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${params.id}`, 1, 'single');
 
   return (
     <Container>
