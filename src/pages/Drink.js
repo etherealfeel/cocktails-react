@@ -1,12 +1,20 @@
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components';
 import useFetch from './../hooks/useFetch';
+import Spinner from '../components/Spinner';
+import ErrorMessage from '../components/ErrorMessage';
 
 const Drink = () => {
   const params = useParams();
-  const {data: drink, loading, error} = useFetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${params.id}`, 1, 'single');
+  const {data: drink, isLoading, error} = useFetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${params.id}`, 1, 'single');
+
+  const spinner = isLoading ? <Spinner/> : null,
+  errorMessage = error ? <ErrorMessage/> : null;
 
   return (
+    <>
+    {spinner}
+    {errorMessage}
     <Container>
       <h2>{drink?.strDrink}</h2>
       <Info>
@@ -27,6 +35,7 @@ const Drink = () => {
         </div>
       </Info>
     </Container>
+    </>
   )
 }
 

@@ -3,13 +3,19 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import '@splidejs/react-splide/css';
 import useFetch from './../hooks/useFetch';
+import Spinner from '../components/Spinner';
+import ErrorMessage from '../components/ErrorMessage';
 
 const Alcoholic = () => {
-    const {data: drinks, loading, error} = useFetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic', 10);
+    const {data: drinks, isLoading, error} = useFetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic', 10);
 
+    const spinner = isLoading ? <Spinner/> : null,
+    errorMessage = error ? <ErrorMessage/> : null;
     return (
-    <div>
-      <Container>
+    <>
+        {spinner}
+        {errorMessage}
+        <Container>
             <h3>Alcoholic</h3>
             <Splide options={{
                 perPage: 4,
@@ -36,7 +42,7 @@ const Alcoholic = () => {
                 })}
             </Splide>
         </Container>
-    </div>
+    </>
   )
 }
 
