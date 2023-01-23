@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import { ErrorText } from "../shared/styledComponents";
 
 const ErrorMessage = () => {
   return (
@@ -8,10 +8,5 @@ const ErrorMessage = () => {
   )
 }
 
-const ErrorText = styled.h1`
-    text-align: center;
-    margin: 4rem auto;
-    color: violet;
-`
 
 export default ErrorMessage;
