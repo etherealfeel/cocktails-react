@@ -5,10 +5,9 @@ import { NavLink } from "react-router-dom";
 
 //App
 export const StyledDiv = styled.div`
-  min-height: 100vh;
-  background: rgb(0,0,0);
-  background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(42,0,75,1) 100%, rgba(68,68,68,1) 100%, rgba(255,255,255,1) 100%, rgba(4,4,60,1) 100%, rgba(9,9,121,0) 100%);  
-`
+  max-width: 1300px;
+  margin: 0 auto;
+`;
 
 //Home
 export const MainContainer = styled.div`
@@ -51,6 +50,10 @@ export const SlideCard = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media screen and (max-width: 1200px) {
+      font-size: 1.1rem;
+    }
   }
 `;
 
@@ -61,22 +64,34 @@ export const Gradient = styled.div`
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
 `;
 
-//Category
+//Category && Searched
 export const Grid = styled(motion.div)`
   display: grid;
-  padding: 2rem 20rem;
+  padding: 2rem 6rem;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 3rem;
+  @media screen and (max-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 568px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 export const Card = styled.div`
-  min-height: 25rem;
+  max-height: 25rem;
   background-color: #fff;
   box-shadow: 2px 5px 3px 0px #b947ff;
   padding-bottom: 1rem;
   border-radius: 0.5rem;
   transition: all 0.3s linear;
   min-width: 0;
+  margin-bottom: 1rem;
 
   img {
     width: 100%;
@@ -120,6 +135,10 @@ export const Card = styled.div`
   :hover {
     box-shadow: 4px 10px 5px 0px #b947ff;
   }
+
+  @media screen and (max-width: 568px) {
+    max-height: 30rem;
+  }
 `;
 
 export const StyledLink = styled(Link)`
@@ -130,7 +149,7 @@ export const StyledLink = styled(Link)`
 
 //SearchForm
 export const StyledForm = styled.form`
-  margin: 1.5rem 30rem;
+  margin: 1.5rem 9rem;
 
   div {
     width: 100%;
@@ -153,6 +172,10 @@ export const StyledForm = styled.form`
     width: 100%;
     box-shadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
     font-family: "Comfortaa", cursive;
+
+    @media screen and (max-width: 568px) {
+      width: 95%;
+    }
   }
 `;
 
@@ -179,13 +202,21 @@ export const AboutContainer = styled.div`
 
 //Navbar
 export const Nav = styled.div`
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-radius: 0 0 4rem 4rem;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   background-color: black;
+  box-shadow: 10px 10px 50px #000;
   svg {
     font-size: 2rem;
     color: gray;
+  }
+  @media screen and (max-width: 1300px) {
+    margin: 0 1rem;
   }
 `;
 
@@ -194,6 +225,9 @@ export const List = styled.div`
   justify-content: center;
   align-items: center;
   gap: 2rem;
+  @media screen and (max-width: 1200px) {
+    gap: 1rem;
+  }
 `;
 
 export const StyledNavLink = styled(NavLink)`
@@ -203,7 +237,7 @@ export const StyledNavLink = styled(NavLink)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-right: 2rem;
+  margin: 0 1rem;
   text-decoration: none;
   width: 6rem;
   height: 6rem;
@@ -226,11 +260,21 @@ export const StyledNavLink = styled(NavLink)`
       color: #fff;
     }
   }
+
+  @media screen and (max-width: 1200px) {
+    width: 3rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 1rem;
+    transform: scale(0.55);
+  }
 `;
 
 //Drink
 export const DrinkContainer = styled.div`
   margin: 2.5rem auto;
+  padding: 0 1rem;
   max-width: 80rem;
 
   h2 {
@@ -238,21 +282,29 @@ export const DrinkContainer = styled.div`
     margin: 1.5rem auto;
     color: #fff;
   }
-`
+`;
+
 export const Info = styled.div`
   display: flex;
   gap: 2.5rem;
+  padding: 0 0.5rem;
 
   img {
-    width: 38rem;
-    height: 38rem;
+    width: 36rem;
+    height: 36rem;
     border-radius: 0.5rem;
+    
+    @media screen and (max-width: 1200px) {
+      width: 70%;
+      height: 70%;
+      margin: 0 auto;
+  }
   }
 
   p {
     padding: 1rem 1.5rem;
     font-size: 1.5rem;
-    color: #50405A;
+    color: #50405a;
     span {
       font-weight: bold;
       color: #fff;
@@ -261,17 +313,22 @@ export const Info = styled.div`
 
   ul {
     list-style: none;
-    color: #50405A;
+    color: #50405a;
     li {
       padding: 0.25rem 1.5rem;
       font-size: 1.5rem;
     }
   }
-`
+
+  @media screen and (max-width: 1200px) {
+    flex-direction: column;
+    padding: 2rem;
+  }
+`;
 
 //ErrorMessage
 export const ErrorText = styled.h1`
-    text-align: center;
-    margin: 4rem auto;
-    color: violet;
-`
+  text-align: center;
+  margin: 4rem auto;
+  color: violet;
+`;

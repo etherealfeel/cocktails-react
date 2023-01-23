@@ -19,14 +19,14 @@ const NonAlcoholic = () => {
         <MainContainer>
                 <h3>Non Alcoholic</h3>
                 <Splide options={{
-                    perPage: 5,
+                    perPage: 4,
                     autoplay: true,
                     pauseOnHover: true,
                     interval: 1000,
                     arrows: false,
                     pagination: false,
                     drag: 'free',
-                    gap: '5rem',
+                    gap: '1rem',
                 }}>
                     {drinks.map((item) => {
                         return (

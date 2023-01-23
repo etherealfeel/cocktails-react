@@ -24,7 +24,7 @@ const SearchForm = () => {
       <div>
         <BiSearchAlt />
         <input
-          placeholder="Cocktail name..."
+          placeholder="Search..."
           type="text"
           ref={searchValue}
           onChange={(e) => handleChangeValue(e)}
