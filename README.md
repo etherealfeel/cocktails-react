@@ -3,6 +3,7 @@
 Simple React app which allows users to look up cocktail recipes with the remote.
 
 [Live Demo](https://cocktails-ef.netlify.app/) :point_left:
+:x:Non-Responsive:x:
 
 ## Getting started
 
