@@ -1,43 +1,35 @@
-import React from "react";
+import { useState } from "react";
 import { BiDrink } from "react-icons/bi";
-import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
-import { Nav, List, StyledNavLink } from "../shared/styledComponents";
+import { FaTimes } from "react-icons/fa";
+import { Nav, NavList, ListItem, StyledNavLink, MobileIcon } from "../shared/styledComponents";
+import { NavLinks as data } from "../data/NavbarData";
 
 const Navbar = () => {
+  const [show, setShow] = useState(false);
+
+  const handleClick = () => {
+    setShow(!show);
+  };
+
+  const closeMobileMenu = () => {
+    setShow(false);
+  };
+
   return (
     <Nav>
-      <StyledNavLink
-        style={{
-          display: "flex",
-          flexDirection: "row",
-        }}
-        to={"/"}
-        end>
-        <BiDrink />
-        <h2>Home</h2>
-      </StyledNavLink>
-      <List>
-        <AiOutlineLeft />
-        <StyledNavLink to={"/drinks/Ordinary_Drink"}>
-          <h2>Ordinary Drink</h2>
-        </StyledNavLink>
-        <StyledNavLink to={"/drinks/Cocktail"}>
-          <h2>Cocktails</h2>
-        </StyledNavLink>
-        <StyledNavLink to={"/drinks/Shot"}>
-          <h2>Shot</h2>
-        </StyledNavLink>
-        <StyledNavLink to={"/drinks/Soft_Drink"}>
-          <h2>Soft Drink</h2>
-        </StyledNavLink>
-        <StyledNavLink to={"/drinks/Beer"}>
-          <h2>Beer</h2>
-        </StyledNavLink>
-        <AiOutlineRight />
-      </List>
-      <StyledNavLink to={"/about"}>
-        <h2>About</h2>
-      </StyledNavLink>
+      <MobileIcon onClick={handleClick}>{show ? <FaTimes /> : <BiDrink />}</MobileIcon>
+      <NavList show={show}>
+        {data.map((link) => (
+          <ListItem key={link.label}> 
+            <StyledNavLink
+              to={link.to}
+              end={link.label === "Home"}
+              onClick={closeMobileMenu}>
+              <h2>{link.label}</h2>
+            </StyledNavLink>
+          </ListItem>
+        ))}
+      </NavList>
     </Nav>
   );
 };

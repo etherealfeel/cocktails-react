@@ -98,6 +98,7 @@ export const Card = styled.div`
     object-fit: cover;
     border-top-left-radius: 0.25rem;
     border-top-right-radius: 0.25rem;
+    cursor: pointer;
   }
   a {
     text-decoration: none;
@@ -149,11 +150,17 @@ export const StyledLink = styled(Link)`
 
 //SearchForm
 export const StyledForm = styled.form`
-  margin: 1.5rem 9rem;
+  margin: 2rem 9rem;
+
+  @media screen and (max-width: 568px) {
+    text-align: center;
+    margin: 6rem 0 1.5rem 0;
+  }
 
   div {
     width: 100%;
     position: relative;
+    margin: 0 auto;
   }
 
   svg {
@@ -174,7 +181,7 @@ export const StyledForm = styled.form`
     font-family: "Comfortaa", cursive;
 
     @media screen and (max-width: 568px) {
-      width: 95%;
+      width: 60%;
     }
   }
 `;
@@ -201,7 +208,7 @@ export const AboutContainer = styled.div`
 `;
 
 //Navbar
-export const Nav = styled.div`
+export const Nav = styled.nav`
   position: sticky;
   top: 0;
   z-index: 10;
@@ -218,17 +225,37 @@ export const Nav = styled.div`
   @media screen and (max-width: 1300px) {
     margin: 0 1rem;
   }
+  @media screen and (max-width: 960px) {
+    background-color: transparent;
+    box-shadow: none;
+    margin: 0;
+  }
 `;
 
-export const List = styled.div`
+export const NavList = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 3rem;
   @media screen and (max-width: 1200px) {
-    gap: 1rem;
+    gap: 2rem;
+  }
+  @media screen and (max-width: 960px) {
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: ${({ show }) => (show ? 1 : 0)};
+    visibility: ${({ show }) => (show ? "visible" : "hidden")};
+    transform: translateY(${({ show }) => (show ? "0" : "-rem")});
+    transition: opacity 0.5s ease;
+    background-color: #000;
   }
 `;
+
+export const ListItem = styled.li``;
 
 export const StyledNavLink = styled(NavLink)`
   font-family: "Megrim", cursive;
@@ -244,21 +271,14 @@ export const StyledNavLink = styled(NavLink)`
   text-align: center;
   cursor: pointer;
   transform: scale(0.75);
-  h4 {
+  transition: color 0.5s ease;
+
+  :hover {
     color: #fff;
-    font-size: 0.8rem;
   }
 
   &.active {
-    color: #fff;
-
-    svg {
-      color: #fff;
-    }
-
-    h4 {
-      color: #fff;
-    }
+    color: violet;
   }
 
   @media screen and (max-width: 1200px) {
@@ -268,6 +288,41 @@ export const StyledNavLink = styled(NavLink)`
   @media screen and (max-width: 768px) {
     width: 1rem;
     transform: scale(0.55);
+  }
+`;
+
+export const MobileIcon = styled.div`
+  display: none;
+  z-index: 50;
+  @media screen and (max-width: 960px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    position: absolute;
+    background-color: #eaeaea;
+    border-radius: 2rem;
+    padding: 1rem;
+    top: 0;
+    right: 0;
+    transform: translate(-30%, 30%);
+    font-size: 1rem;
+    box-shadow: 5px 5px 50px #000;
+    transition: opacity 0.5s ease;
+    svg {
+      color: #000;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: #000;
+      box-shadow: 5px 5px 100px #b947ff;
+      border: 2px solid #fff;
+      svg {
+        color: violet;
+      }
+    }
   }
 `;
 
@@ -293,12 +348,12 @@ export const Info = styled.div`
     width: 36rem;
     height: 36rem;
     border-radius: 0.5rem;
-    
+
     @media screen and (max-width: 1200px) {
       width: 70%;
       height: 70%;
       margin: 0 auto;
-  }
+    }
   }
 
   p {
